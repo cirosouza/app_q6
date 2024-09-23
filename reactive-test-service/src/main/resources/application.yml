@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: reactive-test-service
+  datasource:
+    url: jdbc:h2:mem:testdb  # Banco de dados H2 em memória
+    driver-class-name: org.h2.Driver
+    username: sa  # Usuário padrão do H2
+    password: ""  # Senha vazia
+  r2dbc:
+    url: r2dbc:h2:mem:///testdb  # URL para uso reativo com R2DBC
+    username: sa
+    password: ""
+    connection:
+      factory: io.r2dbc.h2.H2ConnectionFactoryProvider
+  h2:
+    console:
+      enabled: true  # Habilita o console web do H2 para debug
+      path: /h2-console  # Caminho do console web
+
+  jpa:
+    hibernate:
+      ddl-auto: create  # Cria/atualiza as tabelas automaticamente conforme a entidade
+    show-sql: true  # Exibe o SQL gerado no console
+
+
+logging:
+  level:
+    org.hibernate.SQL: DEBUG  # Log de SQL no console
